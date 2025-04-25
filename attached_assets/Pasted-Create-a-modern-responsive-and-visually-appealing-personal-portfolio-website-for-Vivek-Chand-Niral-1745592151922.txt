@@ -1,0 +1,87 @@
+Create a modern, responsive and visually appealing personal portfolio website for "Vivek Chand Nirala" using HTML, CSS, and JavaScript (or any modern framework you prefer). This portfolio should include the following sections and details:
+
+🔰 Welcome Message
+- Text: “Welcome to My Portfolio!”
+
+📄 About Me
+- Full Name: Vivek Chand Nirala
+- B.Tech CSE Student (Full Stack Development specialization) at Lovely Professional University (2022–2026)
+- CGPA: 8.01
+- From Bihar, brought up in Agra
+- Passionate Full Stack Web Developer with strong experience in both frontend and backend development
+- Social Media Head of LPU NCC and A-Certificate NCC Cadet
+- A creative Graphic Designer with experience in Canva, CorelDraw, Adobe Photoshop
+- Former school-level State Athlete, House Captain and Sports Captain
+- Have completed 10 NCC camps including National and Army Attachment
+- Selected among Top 50 LPU students and visited Parliament of India under guidance of Ashok Mittal Sir (MP, Rajya Sabha)
+- Participated in various events like debate, extempore, group discussions, pitch presentations, and more
+
+📞 Contact Me
+- Phone: +91 98765 43210
+- Email: vivekchandnirala@example.com
+- LinkedIn: linkedin.com/in/vivekchandnirala
+- GitHub: github.com/vivekchandnirala
+- Resume: Include a button to download my CV
+- Blog/YouTube: (Optional section placeholder)
+
+🛠 Skills & Technologies
+- Languages: C++, Java, JavaScript, Python, SQL
+- Frontend: HTML5, CSS3, Bootstrap, React.js
+- Backend: Node.js, Express.js, PHP, Laravel
+- Databases: MongoDB, MySQL
+- Tools: VS Code, GitHub, Canva, IntelliJ, Adobe Photoshop, CorelDraw
+- Cloud/DevOps: AWS (Intermediate), Render (Deployment experience)
+
+💼 Experience (Internships)
+1. Web Developer Intern @ W3elites (Flames 24 - Angaar Batch) — June 2024 - July 2024
+   - Built and deployed the official LPU NCC Website using MERN Stack
+   - Added dynamic registration forms, photo sliders, responsive layout
+   - Collaborated with mentors, hosted on Render
+
+2. Community Development Intern @ Drops of Change (Su Shiksha Pathshala) — 2023
+   - Taught underprivileged children (5 to 14 years old)
+   - Promoted education awareness and learning through creative teaching
+
+📁 Projects
+- LPU NCC Website — Full Stack website using MERN; manages NCC operations, events, and registration
+- Indian Army Website — Educational site built using MERN for awareness about NDA/CDS, history, structure
+- Hostel Management System — PHP + MySQL system with complaint tracking and admin dashboard
+- Anant Bhavyatra — Laravel-based event and travel platform with registration, payment, and tour options
+- ATM Simulator — Python-based simple ATM logic system
+- University Management System — HTML-based team project from 1st semester
+
+📜 Certifications & Courses
+- Coursera:
+  • Building Web Applications in PHP
+  • Server-side JavaScript with Node.js
+  • Introduction to Generative AI
+  • C++ Programming
+  • HTML, CSS, and JavaScript for Web Developers
+  • Bits & Bytes of Computer Networking
+  • Data Structures & Algorithms
+
+- Infosys: Web Developer Course 2.0  
+- NPTEL: Cloud Computing  
+- LinkedIn Learning: Cloud Computing  
+- SkillUp: Python, Ethical Hacking, Machine Learning
+
+🏆 Competitions, Hackathons, & Achievements
+- Participated in NASA event organization at LPU  
+- Represented LPU at various NCC National/State camps  
+- Gold medalist in 100m, 200m, Volleyball (Sangram Sports Event)  
+- Selected among Top 50 LPU students to visit Parliament  
+- Group Song & Dance at NCC camps, Extempore, GDs, Debates
+
+📽 Blog & YouTube
+(Add placeholders or space for embedding future blog/videos if needed)
+
+📄 Resume
+Include a “Download My Resume” button
+
+🎨 Design Preferences:
+- Use professional yet energetic theme
+- Clean, responsive layout for mobile and desktop
+- Smooth navigation across all sections
+- Icons for tech stack and social links
+- Highlight projects with links, images, or screenshots if possible
+
