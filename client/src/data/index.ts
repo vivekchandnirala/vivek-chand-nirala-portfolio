@@ -81,30 +81,95 @@ export const projects = [
 
 export const certifications = {
   coursera: [
-    "Building Web Applications in PHP",
-    "Server-side JavaScript with Node.js",
-    "Introduction to Generative AI",
-    "C++ Programming",
-    "HTML, CSS, and JavaScript for Web Developers",
-    "Bits & Bytes of Computer Networking",
-    "Data Structures & Algorithms",
+    {
+      title: "Building Web Applications in PHP",
+      issuer: "Coursera",
+      date: "May 2023",
+      image: "coursera-php.svg",
+      credential: "ABC123456",
+      category: "Web Development"
+    },
+    {
+      title: "Server-side JavaScript with Node.js",
+      issuer: "Coursera",
+      date: "July 2023",
+      image: "coursera-nodejs.svg",
+      credential: "DEF789012",
+      category: "Web Development"
+    },
+    {
+      title: "Introduction to Generative AI",
+      issuer: "Coursera",
+      date: "September 2023",
+      image: "coursera-ai.svg",
+      credential: "GHI345678",
+      category: "AI & Machine Learning"
+    },
+    {
+      title: "C++ Programming",
+      issuer: "Coursera",
+      date: "February 2023",
+      image: "coursera-cpp.svg",
+      credential: "JKL901234",
+      category: "Programming"
+    },
+    {
+      title: "HTML, CSS, and JavaScript for Web Developers",
+      issuer: "Coursera",
+      date: "March 2023",
+      image: "coursera-webdev.svg",
+      credential: "MNO567890",
+      category: "Web Development"
+    },
+    {
+      title: "Bits & Bytes of Computer Networking",
+      issuer: "Coursera",
+      date: "October 2023",
+      image: "coursera-networking.svg",
+      credential: "PQR123456",
+      category: "Networking"
+    },
+    {
+      title: "Data Structures & Algorithms",
+      issuer: "Coursera",
+      date: "November 2023",
+      image: "coursera-dsa.svg",
+      credential: "STU789012",
+      category: "Programming"
+    },
   ],
   others: [
     {
       title: "Web Developer Course 2.0",
       issuer: "Infosys",
+      date: "June 2023",
+      image: "infosys.svg",
+      credential: "INF-WD-2023",
+      category: "Web Development"
     },
     {
       title: "Cloud Computing",
       issuer: "NPTEL",
+      date: "April 2023",
+      image: "nptel.svg",
+      credential: "NPTEL-CC-2023",
+      category: "Cloud"
     },
     {
       title: "Cloud Computing",
       issuer: "LinkedIn Learning",
+      date: "August 2023",
+      image: "linkedin.svg",
+      credential: "LL-CC-2023",
+      category: "Cloud"
     },
     {
       title: "Python, Ethical Hacking, Machine Learning",
       issuer: "SkillUp",
+      date: "December 2023",
+      image: "skillup.svg",
+      credential: "SU-PEM-2023",
+      category: "Multiple"
     },
   ],
 };
