@@ -3,6 +3,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, Code, Github } from "lucide-react";
+import { 
+  FaReact, FaNodeJs, FaPhp, FaBootstrap, FaHtml5, FaCss3Alt, FaPython, FaCode
+} from "react-icons/fa";
+import { 
+  SiExpress, SiMongodb, SiMysql, SiJavascript, SiLaravel
+} from "react-icons/si";
 
 interface ProjectCardProps {
   title: string;
@@ -12,7 +18,166 @@ interface ProjectCardProps {
   delay?: number;
 }
 
+// Helper function to get project background and gradient
+function getProjectBackground(title: string) {
+  // Different gradients for different projects
+  switch(title) {
+    case "LPU NCC Website":
+      return "from-blue-500/20 to-indigo-500/20 via-purple-500/20";
+    case "Indian Army Website":
+      return "from-green-500/20 to-emerald-600/20";
+    case "Hostel Management System":
+      return "from-orange-500/20 to-red-500/20";
+    case "Anant Bhavyatra":
+      return "from-pink-500/20 to-rose-500/20";
+    case "ATM Simulator":
+      return "from-cyan-500/20 to-blue-500/20";
+    case "University Management System":
+      return "from-violet-500/20 to-purple-500/20";
+    default:
+      return "from-primary/20 to-primary/5";
+  }
+}
+
+// Function to get tech stack icons
+function getTechIcons(technologies: string[]) {
+  const iconMap: { [key: string]: JSX.Element } = {
+    "React": <SiReact className="text-[#61DAFB]" />,
+    "Node.js": <SiNodedotjs className="text-[#339933]" />,
+    "Express": <SiExpress className="text-black dark:text-white" />,
+    "MongoDB": <SiMongodb className="text-[#47A248]" />,
+    "PHP": <SiPhp className="text-[#777BB4]" />,
+    "MySQL": <SiMysql className="text-[#4479A1]" />,
+    "Bootstrap": <SiBootstrap className="text-[#7952B3]" />,
+    "JavaScript": <SiJavascript className="text-[#F7DF1E]" />,
+    "HTML": <SiHtml5 className="text-[#E34F26]" />,
+    "CSS": <SiCss3 className="text-[#1572B6]" />,
+    "Python": <SiPython className="text-[#3776AB]" />,
+    "Laravel": <SiLaravel className="text-[#FF2D20]" />,
+    "Render": <SiRender className="text-[#46E3B7]" />,
+    "CLI": <Code className="text-primary" />
+  };
+
+  return technologies.map((tech, index) => {
+    const icon = iconMap[tech] || <Code className="text-primary" />;
+    return (
+      <div key={index} className="flex items-center gap-1">
+        {icon}
+        <span>{tech}</span>
+      </div>
+    );
+  });
+}
+
+function getProjectImageSvg(title: string) {
+  // Dynamic SVG illustration for each project
+  let svgContent;
+  
+  switch(title) {
+    case "LPU NCC Website":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <path d="M65 30H135C138.314 30 141 32.6863 141 36V84C141 87.3137 138.314 90 135 90H65C61.6863 90 59 87.3137 59 84V36C59 32.6863 61.6863 30 65 30Z" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <path d="M59 45H141" stroke="currentColor" strokeWidth="2"/>
+          <circle cx="68" cy="38" r="3" fill="currentColor"/>
+          <circle cx="78" cy="38" r="3" fill="currentColor"/>
+          <circle cx="88" cy="38" r="3" fill="currentColor"/>
+          <path d="M78 60H122" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M78 70H122" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M78 80H100" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+      break;
+      
+    case "Indian Army Website":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <path d="M100 90C116.569 90 130 76.5685 130 60C130 43.4315 116.569 30 100 30C83.4315 30 70 43.4315 70 60C70 76.5685 83.4315 90 100 90Z" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <path d="M100 30V90" stroke="currentColor" strokeWidth="2"/>
+          <path d="M130 60H70" stroke="currentColor" strokeWidth="2"/>
+          <path d="M115 45H85" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M115 75H85" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+      break;
+      
+    case "Hostel Management System":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <path d="M70 35H130V85H70V35Z" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <path d="M70 50H130" stroke="currentColor" strokeWidth="2"/>
+          <path d="M100 35V85" stroke="currentColor" strokeWidth="2"/>
+          <path d="M70 65H130" stroke="currentColor" strokeWidth="2"/>
+          <rect x="78" y="57" width="14" height="4" rx="2" fill="currentColor"/>
+          <rect x="108" y="57" width="14" height="4" rx="2" fill="currentColor"/>
+          <rect x="78" y="72" width="14" height="4" rx="2" fill="currentColor"/>
+          <rect x="108" y="72" width="14" height="4" rx="2" fill="currentColor"/>
+        </svg>
+      );
+      break;
+      
+    case "Anant Bhavyatra":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <path d="M60 80L100 40L140 80" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M73 68L73 80L127 80L127 68" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M90 80L90 65L110 65L110 80" stroke="currentColor" strokeWidth="2"/>
+          <circle cx="100" cy="55" r="7" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+        </svg>
+      );
+      break;
+      
+    case "ATM Simulator":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <rect x="50" y="40" width="100" height="60" rx="4" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <rect x="60" y="50" width="80" height="20" rx="2" fill="white" fillOpacity="0.3" stroke="currentColor" strokeWidth="2"/>
+          <rect x="60" y="80" width="15" height="10" rx="2" fill="currentColor"/>
+          <rect x="82.5" y="80" width="15" height="10" rx="2" fill="currentColor"/>
+          <rect x="105" y="80" width="15" height="10" rx="2" fill="currentColor"/>
+          <rect x="127.5" y="80" width="15" height="10" rx="2" fill="currentColor"/>
+        </svg>
+      );
+      break;
+      
+    case "University Management System":
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <path d="M100 30L140 50V90H60V50L100 30Z" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <path d="M73 50V90" stroke="currentColor" strokeWidth="2"/>
+          <path d="M87 50V90" stroke="currentColor" strokeWidth="2"/>
+          <path d="M100 50V90" stroke="currentColor" strokeWidth="2"/>
+          <path d="M113 50V90" stroke="currentColor" strokeWidth="2"/>
+          <path d="M127 50V90" stroke="currentColor" strokeWidth="2"/>
+          <rect x="90" y="90" width="20" height="0.1" stroke="currentColor" strokeWidth="4"/>
+        </svg>
+      );
+      break;
+      
+    default:
+      svgContent = (
+        <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect width="200" height="120" rx="8" fill="currentColor" fillOpacity="0.1"/>
+          <rect x="70" y="40" width="60" height="40" rx="4" fill="white" fillOpacity="0.2" stroke="currentColor" strokeWidth="2"/>
+          <path d="M75 50H125" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M75 60H125" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M75 70H105" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      );
+  }
+  
+  return svgContent;
+}
+
 export function ProjectCard({ title, description, technologies, link, delay = 0 }: ProjectCardProps) {
+  const bgGradient = getProjectBackground(title);
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -23,6 +188,11 @@ export function ProjectCard({ title, description, technologies, link, delay = 0 
       className="h-full"
     >
       <Card className="h-full flex flex-col border-border/50 hover:border-primary/50 transition-colors overflow-hidden">
+        <div className={`h-40 bg-gradient-to-br ${bgGradient} flex items-center justify-center p-4 relative overflow-hidden`}>
+          <div className="absolute inset-0 flex items-center justify-center text-primary">
+            {getProjectImageSvg(title)}
+          </div>
+        </div>
         <CardHeader className="pb-2">
           <CardTitle className="text-xl flex items-center gap-2">
             <Code className="h-5 w-5 text-primary" />
@@ -33,9 +203,9 @@ export function ProjectCard({ title, description, technologies, link, delay = 0 
           <CardDescription className="text-muted-foreground mb-4">
             {description}
           </CardDescription>
-          <div className="flex flex-wrap gap-2 mt-4">
+          <div className="flex flex-wrap gap-3 mt-4">
             {technologies.map((tech, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+              <Badge key={index} variant="outline" className="text-xs flex gap-1 items-center px-2 py-1 border-primary/30 bg-primary/5">
                 {tech}
               </Badge>
             ))}
@@ -43,7 +213,7 @@ export function ProjectCard({ title, description, technologies, link, delay = 0 
         </CardContent>
         <CardFooter className="border-t border-border/10 pt-4">
           {link ? (
-            <Button variant="outline" size="sm" className="w-full gap-2" asChild>
+            <Button variant="default" size="sm" className="w-full gap-2" asChild>
               <a href={link} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="h-4 w-4" />
                 <span>View Project</span>
