@@ -18,6 +18,24 @@ interface ProjectCardProps {
   delay?: number;
 }
 
+// Tech stack icon mapping
+const techIconMap: { [key: string]: JSX.Element } = {
+  "React": <FaReact className="text-[#61DAFB]" />,
+  "Node.js": <FaNodeJs className="text-[#339933]" />,
+  "Express": <SiExpress className="text-black dark:text-white" />,
+  "MongoDB": <SiMongodb className="text-[#47A248]" />,
+  "PHP": <FaPhp className="text-[#777BB4]" />,
+  "MySQL": <SiMysql className="text-[#4479A1]" />,
+  "Bootstrap": <FaBootstrap className="text-[#7952B3]" />,
+  "JavaScript": <SiJavascript className="text-[#F7DF1E]" />,
+  "HTML": <FaHtml5 className="text-[#E34F26]" />,
+  "CSS": <FaCss3Alt className="text-[#1572B6]" />,
+  "Python": <FaPython className="text-[#3776AB]" />,
+  "Laravel": <SiLaravel className="text-[#FF2D20]" />,
+  "Render": <FaCode className="text-[#46E3B7]" />,
+  "CLI": <Code className="text-primary" />
+};
+
 // Helper function to get project background and gradient
 function getProjectBackground(title: string) {
   // Different gradients for different projects
@@ -39,35 +57,7 @@ function getProjectBackground(title: string) {
   }
 }
 
-// Function to get tech stack icons
-function getTechIcons(technologies: string[]) {
-  const iconMap: { [key: string]: JSX.Element } = {
-    "React": <SiReact className="text-[#61DAFB]" />,
-    "Node.js": <SiNodedotjs className="text-[#339933]" />,
-    "Express": <SiExpress className="text-black dark:text-white" />,
-    "MongoDB": <SiMongodb className="text-[#47A248]" />,
-    "PHP": <SiPhp className="text-[#777BB4]" />,
-    "MySQL": <SiMysql className="text-[#4479A1]" />,
-    "Bootstrap": <SiBootstrap className="text-[#7952B3]" />,
-    "JavaScript": <SiJavascript className="text-[#F7DF1E]" />,
-    "HTML": <SiHtml5 className="text-[#E34F26]" />,
-    "CSS": <SiCss3 className="text-[#1572B6]" />,
-    "Python": <SiPython className="text-[#3776AB]" />,
-    "Laravel": <SiLaravel className="text-[#FF2D20]" />,
-    "Render": <SiRender className="text-[#46E3B7]" />,
-    "CLI": <Code className="text-primary" />
-  };
-
-  return technologies.map((tech, index) => {
-    const icon = iconMap[tech] || <Code className="text-primary" />;
-    return (
-      <div key={index} className="flex items-center gap-1">
-        {icon}
-        <span>{tech}</span>
-      </div>
-    );
-  });
-}
+// Function is no longer needed since we use the global techIconMap
 
 function getProjectImageSvg(title: string) {
   // Dynamic SVG illustration for each project
@@ -178,6 +168,24 @@ function getProjectImageSvg(title: string) {
 export function ProjectCard({ title, description, technologies, link, delay = 0 }: ProjectCardProps) {
   const bgGradient = getProjectBackground(title);
   
+  // Define icon map inside the component
+  const iconMap: { [key: string]: JSX.Element } = {
+    "React": <FaReact className="text-[#61DAFB]" />,
+    "Node.js": <FaNodeJs className="text-[#339933]" />,
+    "Express": <SiExpress className="text-black dark:text-white" />,
+    "MongoDB": <SiMongodb className="text-[#47A248]" />,
+    "PHP": <FaPhp className="text-[#777BB4]" />,
+    "MySQL": <SiMysql className="text-[#4479A1]" />,
+    "Bootstrap": <FaBootstrap className="text-[#7952B3]" />,
+    "JavaScript": <SiJavascript className="text-[#F7DF1E]" />,
+    "HTML": <FaHtml5 className="text-[#E34F26]" />,
+    "CSS": <FaCss3Alt className="text-[#1572B6]" />,
+    "Python": <FaPython className="text-[#3776AB]" />,
+    "Laravel": <SiLaravel className="text-[#FF2D20]" />,
+    "Render": <FaCode className="text-[#46E3B7]" />,
+    "CLI": <Code className="text-primary" />
+  };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -204,11 +212,14 @@ export function ProjectCard({ title, description, technologies, link, delay = 0 
             {description}
           </CardDescription>
           <div className="flex flex-wrap gap-3 mt-4">
-            {technologies.map((tech, index) => (
-              <Badge key={index} variant="outline" className="text-xs flex gap-1 items-center px-2 py-1 border-primary/30 bg-primary/5">
-                {tech}
-              </Badge>
-            ))}
+            {technologies.map((tech, index) => {
+              const icon = iconMap[tech] || <Code className="text-primary" />;
+              return (
+                <Badge key={index} variant="outline" className="text-xs flex gap-1 items-center px-2 py-1 border-primary/30 bg-primary/5">
+                  <span className="mr-1">{icon}</span> {tech}
+                </Badge>
+              );
+            })}
           </div>
         </CardContent>
         <CardFooter className="border-t border-border/10 pt-4">

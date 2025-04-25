@@ -23,9 +23,29 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="md:w-1/3"
           >
-            <div className="aspect-square relative rounded-2xl overflow-hidden bg-primary/10">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5"></div>
-              <div className="absolute inset-0 flex items-center justify-center text-7xl font-bold text-primary/20">
+            <div className="aspect-square relative rounded-2xl overflow-hidden bg-primary/10 shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-primary/20"></div>
+              <svg 
+                viewBox="0 0 200 200" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="absolute inset-0 w-full h-full opacity-25"
+              >
+                <circle cx="100" cy="100" r="100" fill="currentColor" />
+                <path 
+                  d="M100 180C144.183 180 180 144.183 180 100C180 55.8172 144.183 20 100 20C55.8172 20 20 55.8172 20 100C20 144.183 55.8172 180 100 180Z" 
+                  fill="white" 
+                  fillOpacity="0.2" 
+                />
+                <circle cx="100" cy="85" r="30" fill="white" fillOpacity="0.4" />
+                <path 
+                  d="M55 165C55 137.386 75.6262 115 100 115C124.374 115 145 137.386 145 165" 
+                  stroke="white" 
+                  strokeWidth="12" 
+                  strokeLinecap="round" 
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center text-7xl font-bold text-white">
                 VCN
               </div>
             </div>
