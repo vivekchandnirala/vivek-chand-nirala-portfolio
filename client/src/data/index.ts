@@ -80,6 +80,40 @@ export const projects = [
 ];
 
 export const certifications = {
+  ncc: [
+    {
+      title: "NCC 'B' Certificate",
+      issuer: "NCC",
+      date: "2023",
+      image: "/certificates/ncc-b.jpg",
+      credential: "NCC-B-2023",
+      category: "NCC"
+    },
+    {
+      title: "NCC 'C' Certificate",
+      issuer: "NCC",
+      date: "2024",
+      image: "/certificates/ncc-c.jpg",
+      credential: "NCC-C-2024",
+      category: "NCC"
+    },
+    {
+      title: "Republic Day Camp Certificate",
+      issuer: "NCC",
+      date: "2024",
+      image: "/certificates/ncc-rdc.jpg",
+      credential: "NCC-RDC-2024",
+      category: "NCC"
+    },
+    {
+      title: "Army Attachment Camp",
+      issuer: "NCC",
+      date: "2023",
+      image: "/certificates/ncc-camp.jpg",
+      credential: "NCC-AAC-2023",
+      category: "NCC"
+    }
+  ],
   coursera: [
     {
       title: "Building Web Applications in PHP",

@@ -16,35 +16,35 @@ export function CertificationsSection() {
   const { ref } = useSectionInView("certifications");
   const [filterCategory, setFilterCategory] = useState<CertCategory>("All");
   const [view, setView] = useState<"grid" | "compact">("grid");
-  
+
   // Get all available categories
   const getAllCategories = () => {
     const categories = new Set<CertCategory>(["All"]);
-    
+
     // Add all categories from Coursera certifications
     certifications.coursera.forEach(cert => {
       if (cert.category) {
         categories.add(cert.category as CertCategory);
       }
     });
-    
+
     // Add all categories from Other certifications
     certifications.others.forEach(cert => {
       if (cert.category) {
         categories.add(cert.category as CertCategory);
       }
     });
-    
+
     return Array.from(categories);
   };
-  
+
   const allCategories = getAllCategories();
-  
+
   // Filter certifications based on category
   const filteredCoursera = filterCategory === "All" 
     ? certifications.coursera 
     : certifications.coursera.filter(cert => cert.category === filterCategory);
-    
+
   const filteredOthers = filterCategory === "All"
     ? certifications.others
     : certifications.others.filter(cert => cert.category === filterCategory);
@@ -61,11 +61,11 @@ export function CertificationsSection() {
         <div className="absolute -left-20 top-20 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl opacity-75" />
         <div className="absolute -right-20 bottom-20 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl opacity-75" />
       </div>
-      
+
       <div className="container px-4 mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <SectionTitle>Certifications & Courses</SectionTitle>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -93,7 +93,7 @@ export function CertificationsSection() {
             </div>
           </motion.div>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -119,19 +119,23 @@ export function CertificationsSection() {
             ))}
           </div>
         </motion.div>
-        
+
         <Tabs defaultValue="coursera" className="mt-8">
-          <TabsList className="w-full max-w-md mx-auto mb-8 grid grid-cols-2 h-12">
+          <TabsList className="w-full max-w-md mx-auto mb-8 grid grid-cols-3 h-12">
+            <TabsTrigger value="ncc" className="text-sm font-medium h-full">
+              <Award className="h-4 w-4 mr-2" /> 
+              NCC Certificates
+            </TabsTrigger>
             <TabsTrigger value="coursera" className="text-sm font-medium h-full">
               <Award className="h-4 w-4 mr-2" /> 
-              Coursera Certifications
+              Coursera
             </TabsTrigger>
             <TabsTrigger value="others" className="text-sm font-medium h-full">
               <Award className="h-4 w-4 mr-2" /> 
-              Industry Certifications
+              Industry
             </TabsTrigger>
           </TabsList>
-          
+
           <TabsContent value="coursera" className="mt-4">
             <div className={cn(
               "grid gap-6",
@@ -158,7 +162,7 @@ export function CertificationsSection() {
               )}
             </div>
           </TabsContent>
-          
+
           <TabsContent value="others" className="mt-4">
             <div className={cn(
               "grid gap-6",
@@ -183,6 +187,32 @@ export function CertificationsSection() {
                   </div>
                 </div>
               )}
+            </div>
+          </TabsContent>
+          {/* Added NCC Tab Content */}
+          <TabsContent value="ncc" className="mt-4">
+            {/* Add your NCC certification cards here */}
+            <div className={cn(
+              "grid gap-6",
+              view === "grid"
+                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+                : "grid-cols-1"
+            )}>
+              {/* Placeholder for NCC certifications. Replace with actual card data. */}
+              {/* Example:  */}
+              {/* certifications.ncc.map((cert, index) => (
+                  <CertificationCard
+                    key={index}
+                    {...cert}
+                    delay={index * 0.1}
+                  />
+                )) */}
+              <div className="col-span-full flex justify-center items-center py-12 border border-dashed rounded-lg bg-muted/20">
+                <div className="text-center p-6">
+                  <p>Add NCC certifications here</p>
+                </div>
+              </div>
+
             </div>
           </TabsContent>
         </Tabs>

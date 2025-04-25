@@ -64,7 +64,7 @@ export function SkillCard({ name, delay = 0 }: SkillCardProps) {
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
       whileHover={{ scale: 1.05 }}
-      className="group bg-background border border-border/50 rounded-lg p-6 shadow-md hover:shadow-lg hover:border-primary/50 transition-all flex flex-col items-center justify-center text-center"
+      className="group bg-background border border-border/50 rounded-lg p-3 shadow-md hover:shadow-lg hover:border-primary/50 transition-all flex flex-col items-center justify-center text-center"
     >
       {getSkillIcon(name)}
       <Badge variant="secondary" className="text-sm font-medium px-3 py-1 group-hover:bg-primary group-hover:text-white transition-colors">
