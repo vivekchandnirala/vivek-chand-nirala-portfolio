@@ -8,6 +8,7 @@ import { CertificationsSection } from "@/components/certifications-section";
 import { AchievementsSection } from "@/components/achievements-section";
 import { ContactSection } from "@/components/contact-section";
 import { BlogSection } from "@/components/blog-section";
+import { EducationSection } from "@/components/education-section";
 import { Footer } from "@/components/footer";
 
 // Placeholder component -  Replace with actual implementation
@@ -21,6 +22,7 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <AboutSection />
+        <EducationSection />
         <SkillsSection />
         <ExperienceSection />
         <GraphicDesignSection />
