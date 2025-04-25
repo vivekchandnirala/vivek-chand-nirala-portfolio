@@ -1,8 +1,10 @@
+
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/section-title";
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { Button } from "@/components/ui/button";
-import { YoutubeIcon, Newspaper } from "lucide-react";
+import { YoutubeIcon } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function BlogSection() {
   const { ref } = useSectionInView("blog");
@@ -14,34 +16,68 @@ export function BlogSection() {
       className="py-16 md:py-24"
     >
       <div className="container px-4 mx-auto">
-        <SectionTitle>Blog & YouTube</SectionTitle>
+        <SectionTitle>YouTube Channels</SectionTitle>
         
         <motion.div
-          className="mt-12 max-w-3xl mx-auto text-center"
+          className="mt-12 grid md:grid-cols-2 gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="bg-primary/5 border border-primary/10 rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-4">Coming Soon!</h3>
-            <p className="text-muted-foreground mb-8">
-              I'm working on creating valuable content to share my knowledge and experiences. 
-              Stay tuned for upcoming blog posts and YouTube videos on web development, 
-              design, and my journey as an NCC cadet.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="outline" className="gap-2">
-                <Newspaper className="h-4 w-4" />
-                Future Blog
-              </Button>
-              <Button variant="outline" className="gap-2">
-                <YoutubeIcon className="h-4 w-4" />
-                Future Channel
-              </Button>
-            </div>
-          </div>
+          {/* LPU-NCC Channel */}
+          <Card className="bg-primary/5 border border-primary/10 hover:border-primary/30 transition-colors">
+            <CardContent className="p-6">
+              <div className="flex flex-col items-center text-center">
+                <YoutubeIcon className="h-12 w-12 text-red-600 mb-4" />
+                <h3 className="text-2xl font-bold mb-2">LPU-NCC Channel</h3>
+                <p className="text-muted-foreground mb-6">
+                  Explore NCC activities, training sessions, and events at LPU
+                </p>
+                <Button 
+                  variant="default" 
+                  className="bg-red-600 hover:bg-red-700 gap-2"
+                  asChild
+                >
+                  <a 
+                    href="https://www.youtube.com/@LPU-NCC" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <YoutubeIcon className="h-4 w-4" />
+                    Watch Now
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Personal Channel */}
+          <Card className="bg-primary/5 border border-primary/10 hover:border-primary/30 transition-colors">
+            <CardContent className="p-6">
+              <div className="flex flex-col items-center text-center">
+                <YoutubeIcon className="h-12 w-12 text-red-600 mb-4" />
+                <h3 className="text-2xl font-bold mb-2">Vivek Chand Nirala</h3>
+                <p className="text-muted-foreground mb-6">
+                  Personal channel featuring tech tutorials, coding tips, and lifestyle content
+                </p>
+                <Button 
+                  variant="default" 
+                  className="bg-red-600 hover:bg-red-700 gap-2"
+                  asChild
+                >
+                  <a 
+                    href="https://www.youtube.com/@vivekchandnirala" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <YoutubeIcon className="h-4 w-4" />
+                    Watch Now
+                  </a>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>
