@@ -4,6 +4,9 @@ export const userData = {
   phone: "+91 98765 43210",
   linkedIn: "https://linkedin.com/in/vivekchandnirala",
   github: "https://github.com/vivekchandnirala",
+  instagram: "https://instagram.com/vivekchandnirala",
+  facebook: "https://facebook.com/vivekchandnirala",
+  youtube: "https://youtube.com/vivekchandnirala",
 };
 
 export const skills = {
@@ -12,7 +15,7 @@ export const skills = {
   backend: ["Node.js", "Express.js", "PHP", "Laravel"],
   databases: ["MongoDB", "MySQL"],
   tools: ["VS Code", "GitHub", "Canva", "IntelliJ", "Adobe Photoshop", "CorelDraw"],
-  cloud: ["AWS (Intermediate)", "Render (Deployment)"],
+  cloud: ["AWS (Intermediate)", "Render", "Vercel", "Netlify"],
 };
 
 export const experiences = [

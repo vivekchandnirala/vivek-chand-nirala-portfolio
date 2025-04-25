@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Linkedin, GitPullRequest, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, Instagram, Facebook, Youtube } from "lucide-react";
 import { userData } from "@/data";
 
 export function SocialIcons() {
@@ -10,21 +10,42 @@ export function SocialIcons() {
       name: "LinkedIn",
       icon: <Linkedin className="h-5 w-5" />,
       url: userData.linkedIn,
+      color: "hover:text-[#0077B5] hover:border-[#0077B5]"
     },
     {
-      name: "GitPullRequest",
-      icon: <GitPullRequest className="h-5 w-5" />,
+      name: "GitHub",
+      icon: <Github className="h-5 w-5" />,
       url: userData.github,
+      color: "hover:text-[#333] dark:hover:text-white hover:border-[#333] dark:hover:border-white"
+    },
+    {
+      name: "Instagram",
+      icon: <Instagram className="h-5 w-5" />,
+      url: userData.instagram,
+      color: "hover:text-[#E4405F] hover:border-[#E4405F]"
+    },
+    {
+      name: "Facebook",
+      icon: <Facebook className="h-5 w-5" />,
+      url: userData.facebook,
+      color: "hover:text-[#1877F2] hover:border-[#1877F2]"
+    },
+    {
+      name: "YouTube",
+      icon: <Youtube className="h-5 w-5" />,
+      url: userData.youtube,
+      color: "hover:text-[#FF0000] hover:border-[#FF0000]"
     },
     {
       name: "Email",
       icon: <Mail className="h-5 w-5" />,
       url: `mailto:${userData.email}`,
+      color: "hover:text-primary hover:border-primary"
     },
   ];
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center flex-wrap gap-3">
       <TooltipProvider>
         {socialLinks.map((social, index) => (
           <motion.div
@@ -38,7 +59,7 @@ export function SocialIcons() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-full h-10 w-10 border border-border"
+                  className={`rounded-full h-10 w-10 border border-border transition-colors ${social.color}`}
                   asChild
                 >
                   <a
