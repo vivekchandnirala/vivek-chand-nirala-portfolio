@@ -10,6 +10,10 @@ import { ContactSection } from "@/components/contact-section";
 import { BlogSection } from "@/components/blog-section";
 import { Footer } from "@/components/footer";
 
+// Placeholder component -  Replace with actual implementation
+const GraphicDesignSection = () => <div>Graphic Design Section</div>;
+
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -19,6 +23,7 @@ export default function Home() {
         <AboutSection />
         <SkillsSection />
         <ExperienceSection />
+        <GraphicDesignSection />
         <ProjectsSection />
         <CertificationsSection />
         <AchievementsSection />
