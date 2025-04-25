@@ -36,7 +36,7 @@ export function CertificationCard({
   delay = 0 
 }: CertificationCardProps) {
   const [showDialog, setShowDialog] = useState(false);
-  
+
   // Generate credential letter colors based on issuer
   const getCredentialStyle = () => {
     const colors: Record<string, string> = {
@@ -45,11 +45,12 @@ export function CertificationCard({
       'NPTEL': 'bg-orange-100 text-orange-700 border-orange-300 dark:bg-orange-950 dark:text-orange-300 dark:border-orange-800',
       'LinkedIn Learning': 'bg-sky-100 text-sky-700 border-sky-300 dark:bg-sky-950 dark:text-sky-300 dark:border-sky-800',
       'SkillUp': 'bg-purple-100 text-purple-700 border-purple-300 dark:bg-purple-950 dark:text-purple-300 dark:border-purple-800',
+      'NCC': 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-950 dark:text-yellow-300 dark:border-yellow-800'
     };
-    
+
     return colors[issuer] || 'bg-primary/10 text-primary border-primary/30';
   };
-  
+
   // Generate a certificate image or placeholder
   const getCertificateImage = () => {
     // For demonstration, we'll use dynamic SVG based on title & issuer
@@ -58,7 +59,7 @@ export function CertificationCard({
                  issuer === 'NPTEL' ? '#F47920' :
                  issuer === 'LinkedIn Learning' ? '#0077B5' :
                  issuer === 'SkillUp' ? '#6B46C1' : '#3B82F6';
-                 
+
     return (
       <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
         <rect x="0" y="0" width="400" height="200" fill={`${color}10`} />
@@ -85,59 +86,48 @@ export function CertificationCard({
         className="h-full cursor-pointer"
         onClick={() => setShowDialog(true)}
       >
-        <Card className="h-full border-border/50 hover:border-primary/50 hover:shadow-md transition-all overflow-hidden group">
+        <Card className="h-full border-border/50 hover:border-primary/50 hover:shadow-md transition-all overflow-hidden group relative">
           <div className="absolute top-0 right-0 bg-primary/10 text-primary text-xs font-medium py-1 px-2 rounded-bl-md opacity-0 group-hover:opacity-100 transition-opacity">
             Click to view
           </div>
-          
+
           <CardHeader className="pb-2 relative">
             <CardDescription className="text-primary flex items-center gap-2 font-medium">
               <Award className="h-4 w-4" />
               {issuer}
-              {date && (
-                <span className="text-muted-foreground text-xs flex items-center ml-auto">
-                  <Calendar className="h-3 w-3 mr-1" />
-                  {date}
-                </span>
-              )}
             </CardDescription>
             <CardTitle className="text-lg">{title}</CardTitle>
-            
-            {category && (
-              <Badge 
-                variant="outline" 
-                className={`absolute top-2 right-6 text-xs ${
-                  category === 'Web Development' ? 'border-blue-300 text-blue-600 dark:text-blue-400' :
-                  category === 'Programming' ? 'border-green-300 text-green-600 dark:text-green-400' :
-                  category === 'Cloud' ? 'border-purple-300 text-purple-600 dark:text-purple-400' :
-                  category === 'AI & Machine Learning' ? 'border-red-300 text-red-600 dark:text-red-400' :
-                  category === 'Networking' ? 'border-amber-300 text-amber-600 dark:text-amber-400' :
-                  'border-gray-300 text-gray-600 dark:text-gray-400'
-                }`}
-              >
-                {category}
-              </Badge>
-            )}
           </CardHeader>
-          
+
           <CardContent className="pt-2">
             <div className="w-full overflow-hidden rounded-md mb-3 aspect-video bg-muted/50">
               {getCertificateImage()}
             </div>
-            
+            <div className="flex justify-between">
+              {date && (
+                <Badge variant="outline" className={getCredentialStyle()}>
+                  {date}
+                </Badge>
+              )}
+              {category && (
+                <Badge variant="outline" className={getCredentialStyle()}>
+                  {category}
+                </Badge>
+              )}
+            </div>
             {credential && (
               <div className={`text-xs rounded-full border px-3 py-1 inline-block mt-1 ${getCredentialStyle()}`}>
                 ID: {credential}
               </div>
             )}
           </CardContent>
-          
+
           <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-primary/20">
             <div className="h-full bg-primary" style={{ width: '100%' }} />
           </div>
         </Card>
       </motion.div>
-      
+
       {/* Certificate Dialog */}
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent className="sm:max-w-2xl">
@@ -156,14 +146,14 @@ export function CertificationCard({
               )}
             </DialogDescription>
           </DialogHeader>
-          
+
           <div className="my-4">
             <div className="bg-muted/30 border rounded-lg p-4 mb-6">
               <div className="mx-auto max-w-2xl">
                 {getCertificateImage()}
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <h4 className="text-sm font-medium flex items-center gap-1.5">
@@ -172,7 +162,7 @@ export function CertificationCard({
                 </h4>
                 <p className="text-muted-foreground text-sm">{category || "Professional Development"}</p>
               </div>
-              
+
               {credential && (
                 <div className="space-y-2">
                   <h4 className="text-sm font-medium flex items-center gap-1.5">
@@ -184,12 +174,12 @@ export function CertificationCard({
               )}
             </div>
           </div>
-          
+
           <DialogFooter className="flex sm:justify-between items-center">
             <Button variant="outline" size="sm" onClick={() => setShowDialog(false)}>
               <X className="h-4 w-4 mr-2" /> Close
             </Button>
-            
+
             <Button size="sm">
               <ExternalLink className="h-4 w-4 mr-2" /> Verify Certificate
             </Button>

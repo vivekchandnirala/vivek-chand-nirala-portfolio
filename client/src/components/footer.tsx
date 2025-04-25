@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { SocialIcons } from "@/components/social-icons";
-import { ResumeDownload } from "@/components/resume-download";
+//import { ResumeDownload } from "@/components/resume-download"; // Removed import as the component is not used anymore.
 import { userData } from "@/data";
 
 export function Footer() {
@@ -19,7 +19,7 @@ export function Footer() {
               Full Stack Web Developer & NCC Cadet
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,10 +27,10 @@ export function Footer() {
             className="flex flex-col items-center gap-4"
           >
             <SocialIcons />
-            <ResumeDownload variant="outline" size="sm" />
+            {/*<ResumeDownload variant="outline" size="sm" />*/} {/*Removed ResumeDownload component*/}
           </motion.div>
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

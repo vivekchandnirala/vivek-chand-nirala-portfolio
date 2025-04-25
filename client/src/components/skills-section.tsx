@@ -25,9 +25,9 @@ export function SkillsSection() {
     >
       <div className="container px-4 mx-auto">
         <SectionTitle>Skills & Technologies</SectionTitle>
-        
+
         <div className="mt-12">
-          <div className="mb-10">
+          <div className="mb-6">
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                 <span className="text-primary">💻</span>
@@ -46,8 +46,8 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </div>
-          
-          <div className="mb-10">
+
+          <div className="mb-6">
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                 <span className="text-primary">🎨</span>
@@ -66,8 +66,8 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </div>
-          
-          <div className="mb-10">
+
+          <div className="mb-6">
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                 <span className="text-primary">🔧</span>
@@ -86,8 +86,8 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </div>
-          
-          <div className="mb-10">
+
+          <div className="mb-6">
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                 <span className="text-primary">🗄️</span>
@@ -106,8 +106,8 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </div>
-          
-          <div className="mb-10">
+
+          <div className="mb-6">
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
                 <span className="text-primary">🛠️</span>
@@ -126,7 +126,7 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </div>
-          
+
           <div>
             <h3 className="text-xl font-bold mb-6 flex items-center">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center mr-3">
