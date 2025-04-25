@@ -9,41 +9,12 @@ import { Dialog, DialogContent } from "@/components/ui/dialog";
 // Add your design works here
 const designWorks = [
   {
-    title: "NCC Event Poster",
-    category: "Poster Design",
-    image: "/designs/ncc-poster.jpg",
-    description: "Event poster created for NCC annual gathering"
+    title: "Event Poster Design",
+    category: "Poster",
+    image: "/designs/poster1.jpg", // You'll need to add these images
+    description: "Creative event poster design"
   },
-  {
-    title: "College Brochure",
-    category: "Brochure Design",
-    image: "/designs/college-brochure.jpg",
-    description: "Brochure design for college events and activities"
-  },
-  {
-    title: "Photo Manipulation Art",
-    category: "Photo Editing",
-    image: "/designs/photo-art.jpg",
-    description: "Creative photo manipulation artwork"
-  },
-  {
-    title: "Event Memento",
-    category: "Memento Design",
-    image: "/designs/memento.jpg",
-    description: "Custom memento design for special events"
-  },
-  {
-    title: "Digital Illustration",
-    category: "Illustration",
-    image: "/designs/illustration.jpg",
-    description: "Digital illustration artwork"
-  },
-  {
-    title: "Marketing Poster",
-    category: "Poster Design",
-    image: "/designs/marketing.jpg",
-    description: "Marketing campaign poster design"
-  }
+  // Add more designs here
 ];
 
 export function GraphicDesignSection() {
@@ -69,7 +40,7 @@ export function GraphicDesignSection() {
         </motion.p>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -83,17 +54,15 @@ export function GraphicDesignSection() {
               onClick={() => setSelectedWork(work)}
               className="cursor-pointer"
             >
-              <Card className="overflow-hidden border-2 hover:border-primary/50">
-                <div className="aspect-square relative">
+              <Card className="overflow-hidden">
+                <div className="aspect-video relative">
                   <img
                     src={work.image}
                     alt={work.title}
                     className="object-cover w-full h-full"
                   />
-                  <div className="absolute inset-0 bg-black/70 opacity-0 hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-4 text-center">
-                    <p className="text-white font-bold text-xl mb-2">{work.title}</p>
-                    <p className="text-white/80 text-sm mb-2">{work.category}</p>
-                    <p className="text-white/70 text-sm">{work.description}</p>
+                  <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <p className="text-white font-medium">{work.title}</p>
                   </div>
                 </div>
               </Card>
