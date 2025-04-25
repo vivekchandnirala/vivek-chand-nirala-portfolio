@@ -29,7 +29,16 @@ export function BlogSection() {
           <Card className="bg-primary/5 border border-primary/10 hover:border-primary/30 transition-colors">
             <CardContent className="p-6">
               <div className="flex flex-col items-center text-center">
-                <YoutubeIcon className="h-12 w-12 text-red-600 mb-4" />
+                <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
+                  <img 
+                    src="https://i.ytimg.com/vi/YOUR_LPU_NCC_VIDEO_ID/maxresdefault.jpg" 
+                    alt="LPU-NCC YouTube Channel"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <YoutubeIcon className="h-12 w-12 text-red-600" />
+                  </div>
+                </div>
                 <h3 className="text-2xl font-bold mb-2">LPU-NCC Channel</h3>
                 <p className="text-muted-foreground mb-6">
                   Explore NCC activities, training sessions, and events at LPU
@@ -56,7 +65,16 @@ export function BlogSection() {
           <Card className="bg-primary/5 border border-primary/10 hover:border-primary/30 transition-colors">
             <CardContent className="p-6">
               <div className="flex flex-col items-center text-center">
-                <YoutubeIcon className="h-12 w-12 text-red-600 mb-4" />
+                <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
+                  <img 
+                    src="https://i.ytimg.com/vi/YOUR_PERSONAL_VIDEO_ID/maxresdefault.jpg" 
+                    alt="Vivek Chand Nirala YouTube Channel"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <YoutubeIcon className="h-12 w-12 text-red-600" />
+                  </div>
+                </div>
                 <h3 className="text-2xl font-bold mb-2">Vivek Chand Nirala</h3>
                 <p className="text-muted-foreground mb-6">
                   Personal channel featuring tech tutorials, coding tips, and lifestyle content
