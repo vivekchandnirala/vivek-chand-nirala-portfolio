@@ -16,7 +16,7 @@ export function Footer() {
           >
             <h2 className="text-xl font-bold text-primary mb-2">Vivek Chand Nirala</h2>
             <p className="text-muted-foreground text-sm">
-              Full Stack Web Developer & NCC Cadet
+              Full Stack Web Developer, UI/UX Desiger & NCC Cadet
             </p>
           </motion.div>
 

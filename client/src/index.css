@@ -117,3 +117,15 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary;
 }
+
+
+/* 👇 Portrait and landscape image fix inside modal */
+.preview-image {
+  max-height: 60vh;      /* height won't overflow screen */
+  max-width: 100%;       /* don't overflow width */
+  width: auto;           /* maintain aspect ratio */
+  object-fit: contain;   /* prevent cutting of image */
+  display: block;
+  margin: auto;
+  border-radius: 8px;
+}

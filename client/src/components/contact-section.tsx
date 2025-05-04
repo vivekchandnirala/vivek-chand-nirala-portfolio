@@ -2,7 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/section-title";
 import { useSectionInView } from "@/hooks/use-section-in-view";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -38,28 +45,48 @@ export function ContactSection() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent!",
-      description: "Thank you for contacting me. I'll get back to you soon.",
-    });
-    
-    form.reset();
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for contacting me. I'll get back to you soon.",
+        });
+        form.reset();
+      } else {
+        toast({
+          title: "Failed to send",
+          description: data.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Email sending error:", error);
+      toast({
+        title: "Error",
+        description: "Something went wrong while sending the message.",
+        variant: "destructive",
+      });
+    }
+
     setIsSubmitting(false);
   }
 
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className="py-16 md:py-24 bg-muted/30"
-    >
+    <section id="contact" ref={ref} className="py-16 md:py-24 bg-muted/30">
       <div className="container px-4 mx-auto">
         <SectionTitle>Contact Me</SectionTitle>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -69,9 +96,10 @@ export function ContactSection() {
           >
             <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
             <p className="text-muted-foreground mb-8">
-              Feel free to contact me for any work or suggestions. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+              Feel free to contact me for any work or suggestions. I'm always open to discussing new
+              projects, creative ideas, or opportunities to be part of your vision.
             </p>
-            
+
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0">
@@ -82,7 +110,7 @@ export function ContactSection() {
                   <p className="text-muted-foreground">{userData.phone}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0">
                   <Mail className="h-5 w-5 text-primary" />
@@ -92,24 +120,26 @@ export function ContactSection() {
                   <p className="text-muted-foreground">{userData.email}</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <h4 className="text-base font-semibold mb-1">Location</h4>
-                  <p className="text-muted-foreground">Lovely Professional University, Punjab, India</p>
+                  <p className="text-muted-foreground">
+                    Lovely Professional University, Punjab, India
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-8">
               <h4 className="text-base font-semibold mb-4">Connect with me</h4>
               <SocialIcons />
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -118,7 +148,7 @@ export function ContactSection() {
           >
             <div className="bg-background rounded-xl p-6 shadow-sm">
               <h3 className="text-2xl font-bold mb-6">Send Message</h3>
-              
+
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <FormField
@@ -134,7 +164,7 @@ export function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="email"
@@ -148,7 +178,7 @@ export function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="subject"
@@ -162,7 +192,7 @@ export function ContactSection() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="message"
@@ -170,17 +200,17 @@ export function ContactSection() {
                       <FormItem>
                         <FormLabel>Message</FormLabel>
                         <FormControl>
-                          <Textarea 
-                            placeholder="Write your message here" 
-                            className="min-h-[120px] resize-none" 
-                            {...field} 
+                          <Textarea
+                            placeholder="Write your message here"
+                            className="min-h-[120px] resize-none"
+                            {...field}
                           />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  
+
                   <Button type="submit" className="w-full" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <span className="flex items-center">

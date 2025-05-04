@@ -1,11 +1,18 @@
 import express, { type Request, Response, NextFunction } from "express";
-import { registerRoutes } from "./routes";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { createServer, type Server } from "http";
+import nodemailer from "nodemailer";
 import { setupVite, serveStatic, log } from "./vite";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Logging Middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -24,11 +31,7 @@ app.use((req, res, next) => {
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
+      if (logLine.length > 80) logLine = logLine.slice(0, 79) + "…";
       log(logLine);
     }
   });
@@ -36,35 +39,82 @@ app.use((req, res, next) => {
   next();
 });
 
+// ✅ Contact Form API Route
+app.post("/api/contact", async (req: Request, res: Response) => {
+  const { name, email, subject, message } = req.body;
+
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({
+      success: false,
+      message: "All fields are required",
+    });
+  }
+
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "vivekchandnirala28@gmail.com",         // ✅ Your Gmail ID
+        pass: "vflpthfeakmnotct",                    // ✅ App Password (NO SPACES)
+      },
+    });
+
+    const mailOptions = {
+      from: email,
+      to: "vivekchandnirala28@gmail.com",            // ✅ Same as user or another email
+      subject: subject,
+      text: `From: ${name} <${email}>\n\n${message}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    return res.status(200).json({
+      success: true,
+      message: "Message received and email sent successfully!",
+    });
+
+  } catch (error) {
+    console.error("Email error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to send email. Please try again later.",
+    });
+  }
+});
+
+// Resume route (optional)
+app.get("/resume.pdf", (_req: Request, res: Response) => {
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", "attachment; filename=Vivek_Chand_Nirala_Resume.pdf");
+  const placeholderResponse = "This is a placeholder for Vivek Chand Nirala's resume PDF.";
+  res.send(Buffer.from(placeholderResponse));
+});
+
+// Create server
+const server: Server = createServer(app);
+
+// Error handler
+app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
+  res.status(status).json({ message });
+  throw err;
+});
+
+// Vite setup
 (async () => {
-  const server = await registerRoutes(app);
-
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
-
-    res.status(status).json({ message });
-    throw err;
-  });
-
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
   const port = 5000;
   server.listen({
     port,
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
-    log(`serving on port ${port}`);
+    log(`Server is running at http://localhost:${port}`);
   });
 })();

@@ -6,10 +6,10 @@ import { Card } from "@/components/ui/card";
 
 const educationData = [
   {
-    level: "B.Tech CSE",
-    institution: "Lovely Professional University",
+    level: "Undergraduate",
+    institution: "Lovely Professional University (B.Tech CSE)",
     year: "2022-2026",
-    image: "/education/lpu.jpg",
+    image: "/education/lpu.jpg", // Add LPU image here
     achievements: [
       "CGPA: 8.01",
       "Top 50 LPU Students - Parliament Visit",
@@ -18,24 +18,22 @@ const educationData = [
   },
   {
     level: "Intermediate",
-    institution: "Your Intermediate School Name",
+    institution: "Kendriya Vidyalaya No.3, Ambala Cantt",
     year: "2020-2022",
-    image: "/education/intermediate.jpg",
+    image: "/education/jnv-inter.jpg", // Add Intermediate image here
     achievements: [
-      "Percentage: XX%",
-      "House Captain",
       "Sports Captain"
     ]
   },
   {
     level: "Matriculation",
-    institution: "Your School Name",
+    institution: "Army Public School, Bikaner",
     year: "2019-2020",
-    image: "/education/school.jpg",
+    image: "/education/jnv-matric.jpg", // Add School photo here
     achievements: [
-      "Percentage: XX%",
       "State Level Athlete",
-      "Academic Excellence"
+      "House Captain",
+      "Gold Medalist in 100m, 200m and Volleyball"
     ]
   }
 ];

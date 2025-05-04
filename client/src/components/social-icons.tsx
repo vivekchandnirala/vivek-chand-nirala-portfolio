@@ -18,18 +18,18 @@ export function SocialIcons() {
       url: userData.github,
       color: "hover:text-[#333] dark:hover:text-white hover:border-[#333] dark:hover:border-white"
     },
-    {
-      name: "Instagram",
-      icon: <Instagram className="h-5 w-5" />,
-      url: userData.instagram,
-      color: "hover:text-[#E4405F] hover:border-[#E4405F]"
-    },
-    {
-      name: "Facebook",
-      icon: <Facebook className="h-5 w-5" />,
-      url: userData.facebook,
-      color: "hover:text-[#1877F2] hover:border-[#1877F2]"
-    },
+    // {
+    //   name: "Instagram",
+    //   icon: <Instagram className="h-5 w-5" />,
+    //   url: userData.instagram,
+    //   color: "hover:text-[#E4405F] hover:border-[#E4405F]"
+    // },
+    // {
+    //   name: "Facebook",
+    //   icon: <Facebook className="h-5 w-5" />,
+    //   url: userData.facebook,
+    //   color: "hover:text-[#1877F2] hover:border-[#1877F2]"
+    // },
     {
       name: "YouTube",
       icon: <Youtube className="h-5 w-5" />,

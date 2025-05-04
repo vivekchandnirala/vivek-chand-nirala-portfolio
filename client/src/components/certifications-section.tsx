@@ -120,7 +120,7 @@ export function CertificationsSection() {
           </div>
         </motion.div>
 
-        <Tabs defaultValue="coursera" className="mt-8">
+        <Tabs defaultValue="ncc" className="mt-8">
           <TabsList className="w-full max-w-md mx-auto mb-8 grid grid-cols-3 h-12">
             <TabsTrigger value="ncc" className="text-sm font-medium h-full">
               <Award className="h-4 w-4 mr-2" /> 
@@ -128,12 +128,13 @@ export function CertificationsSection() {
             </TabsTrigger>
             <TabsTrigger value="coursera" className="text-sm font-medium h-full">
               <Award className="h-4 w-4 mr-2" /> 
-              Coursera
+              Courses
             </TabsTrigger>
             <TabsTrigger value="others" className="text-sm font-medium h-full">
               <Award className="h-4 w-4 mr-2" /> 
               Industry
             </TabsTrigger>
+            
           </TabsList>
 
           <TabsContent value="coursera" className="mt-4">
@@ -189,32 +190,37 @@ export function CertificationsSection() {
               )}
             </div>
           </TabsContent>
-          {/* Added NCC Tab Content */}
-          <TabsContent value="ncc" className="mt-4">
-            {/* Add your NCC certification cards here */}
-            <div className={cn(
-              "grid gap-6",
-              view === "grid"
-                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-                : "grid-cols-1"
-            )}>
-              {/* Placeholder for NCC certifications. Replace with actual card data. */}
-              {/* Example:  */}
-              {/* certifications.ncc.map((cert, index) => (
-                  <CertificationCard
-                    key={index}
-                    {...cert}
-                    delay={index * 0.1}
-                  />
-                )) */}
-              <div className="col-span-full flex justify-center items-center py-12 border border-dashed rounded-lg bg-muted/20">
-                <div className="text-center p-6">
-                  <p>Add NCC certifications here</p>
-                </div>
-              </div>
 
-            </div>
-          </TabsContent>
+
+          <TabsContent value="ncc" className="mt-4">
+  <div className={cn(
+    "grid gap-6",
+    view === "grid"
+      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      : "grid-cols-1"
+  )}>
+    {certifications.ncc && certifications.ncc.length > 0 ? (
+      certifications.ncc.map((cert, index) => (
+        <CertificationCard
+          key={index}
+          {...cert}
+          delay={index * 0.1}
+        />
+      ))
+    ) : (
+      <div className="col-span-full flex justify-center items-center py-12 border border-dashed rounded-lg bg-muted/20">
+        <div className="text-center p-6">
+          <ListFilter className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+          <h3 className="text-lg font-medium mb-2">No certifications in this category</h3>
+          <p className="text-muted-foreground">Try selecting a different category filter</p>
+        </div>
+      </div>
+    )}
+  </div>
+</TabsContent>
+
+
+
         </Tabs>
       </div>
     </section>

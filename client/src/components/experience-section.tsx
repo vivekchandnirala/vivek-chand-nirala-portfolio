@@ -15,7 +15,7 @@ export function ExperienceSection() {
     >
       <div className="container px-4 mx-auto relative z-10">
         <div className="text-center mb-16">
-          <SectionTitle>Professional Experience</SectionTitle>
+          <SectionTitle>Experience</SectionTitle>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

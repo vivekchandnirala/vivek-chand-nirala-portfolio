@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/components/section-title";
 import { useSectionInView } from "@/hooks/use-section-in-view";
@@ -31,7 +30,7 @@ export function BlogSection() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
                   <img 
-                    src="https://i.ytimg.com/vi/YOUR_LPU_NCC_VIDEO_ID/maxresdefault.jpg" 
+                    src="/images/lpu-ncc-thumb.jpg" 
                     alt="LPU-NCC YouTube Channel"
                     className="w-full h-full object-cover"
                   />
@@ -49,7 +48,7 @@ export function BlogSection() {
                   asChild
                 >
                   <a 
-                    href="https://www.youtube.com/@LPU-NCC" 
+                    href="https://www.youtube.com/@LPUNCC" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
@@ -67,7 +66,7 @@ export function BlogSection() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-full aspect-video mb-4 rounded-lg overflow-hidden">
                   <img 
-                    src="https://i.ytimg.com/vi/YOUR_PERSONAL_VIDEO_ID/maxresdefault.jpg" 
+                    src="/images/vivek-channel-thumb.jpg" 
                     alt="Vivek Chand Nirala YouTube Channel"
                     className="w-full h-full object-cover"
                   />
@@ -85,7 +84,7 @@ export function BlogSection() {
                   asChild
                 >
                   <a 
-                    href="https://www.youtube.com/@vivekchandnirala" 
+                    href="https://www.youtube.com/@Vivek_Chand_Nirala" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >

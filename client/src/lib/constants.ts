@@ -8,6 +8,11 @@ export const navItems = [
     href: "#about",
   },
   {
+    name: "Education",
+    href: "#education",
+  },
+
+  {
     name: "Skills",
     href: "#skills",
   },
@@ -15,10 +20,10 @@ export const navItems = [
     name: "Experience",
     href: "#experience",
   },
-  {
-    name: "Graphic Design",
-    href: "#graphic-design",
-  },
+  // {
+  //   name: "Graphic Design",
+  //   href: "#graphic-design",
+  // },
   {
     name: "Projects",
     href: "#projects",

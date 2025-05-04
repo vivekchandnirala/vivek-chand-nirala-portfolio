@@ -17,9 +17,9 @@ Create a modern, responsive and visually appealing personal portfolio website fo
 - Participated in various events like debate, extempore, group discussions, pitch presentations, and more
 
 📞 Contact Me
-- Phone: +91 98765 43210
+- Phone: +91 7454829911
 - Email: vivekchandnirala@example.com
-- LinkedIn: linkedin.com/in/vivekchandnirala
+- LinkedIn: https://www.linkedin.com/in/vivek-chand-nirala/
 - GitHub: github.com/vivekchandnirala
 - Resume: Include a button to download my CV
 - Blog/YouTube: (Optional section placeholder)

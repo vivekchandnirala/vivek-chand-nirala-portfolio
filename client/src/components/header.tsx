@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { MobileNav } from "@/components/mobile-nav";
 import { navItems } from "@/lib/constants";
+import { useTheme } from "@/components/theme-provider";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,68 +13,54 @@ export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const { scrollY } = useScroll();
-  const headerBg = useTransform(
-    scrollY,
-    [0, 50],
-    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.9)"]
-  );
-  const headerBgDark = useTransform(
-    scrollY,
-    [0, 50],
-    ["rgba(10, 10, 17, 0)", "rgba(10, 10, 17, 0.9)"]
-  );
+  const headerBg = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.9)"]);
+  const headerBgDark = useTransform(scrollY, [0, 50], ["rgba(10, 10, 17, 0)", "rgba(10, 10, 17, 0.9)"]);
+
+  const { theme } = useTheme(); // Get current theme from context
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll("section[id]");
       const scrollPosition = window.scrollY + 100;
-      
+
       sections.forEach((section) => {
         const sectionTop = (section as HTMLElement).offsetTop;
         const sectionHeight = (section as HTMLElement).offsetHeight;
         const sectionId = section.getAttribute("id") || "";
-        
+
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveSection(sectionId);
         }
       });
-      
+
       setHasScrolled(window.scrollY > 5);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Apply theme-related styles to the header when theme changes
+    const header = document.querySelector("header");
+    if (header) {
+      header.classList.remove("light", "dark");
+      header.classList.add(theme);
+
+      if (theme === "dark") {
+        header.style.backgroundColor = "rgba(10, 10, 17, 0.9)";
+      } else {
+        header.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+      }
+    }
+  }, [theme]);
+
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md ${
-          hasScrolled
-            ? "dark:shadow-md shadow-sm dark:shadow-gray-800/50"
-            : "shadow-none"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md ${hasScrolled ? "shadow-md" : "shadow-none"}`}
         style={{
-          backgroundColor: headerBg,
-          backgroundImage: `var(--background-image, none)`,
-        }}
-        onUpdate={(latest) => {
-          document.documentElement.style.setProperty(
-            "--background-image",
-            `linear-gradient(to bottom, ${
-              document.documentElement.classList.contains("dark")
-                ? latest.backgroundColor === "rgba(10, 10, 17, 0)"
-                  ? "rgba(10, 10, 17, 0)"
-                  : headerBgDark.get()
-                : latest.backgroundColor
-            }, ${
-              document.documentElement.classList.contains("dark")
-                ? latest.backgroundColor === "rgba(10, 10, 17, 0)"
-                  ? "rgba(10, 10, 17, 0)"
-                  : headerBgDark.get()
-                : latest.backgroundColor
-            })`
-          );
+          backgroundColor: theme === "dark" ? headerBgDark.get() : headerBg.get(),
         }}
       >
         <div className="container mx-auto py-3 px-4 flex items-center justify-between">
@@ -85,12 +72,10 @@ export function Header() {
               <ul className="flex items-center gap-1">
                 {navItems.map(({ name, href }) => (
                   <li key={name}>
-                    <a 
+                    <a
                       href={href}
                       className={`relative px-3 py-2 text-sm transition rounded-md hover:text-primary ${
-                        activeSection === name.toLowerCase() 
-                          ? "text-primary" 
-                          : "text-foreground/80"
+                        activeSection === name.toLowerCase() ? "text-primary" : "text-foreground/80"
                       }`}
                     >
                       {name}
@@ -126,7 +111,7 @@ export function Header() {
           </div>
         </div>
       </motion.header>
-      
+
       <MobileNav isOpen={isOpen} setIsOpen={setIsOpen} activeSection={activeSection} />
     </>
   );

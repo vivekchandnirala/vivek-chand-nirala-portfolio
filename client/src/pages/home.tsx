@@ -12,7 +12,7 @@ import { EducationSection } from "@/components/education-section";
 import { Footer } from "@/components/footer";
 
 // Placeholder component -  Replace with actual implementation
-const GraphicDesignSection = () => <div>Graphic Design Section</div>;
+// const GraphicDesignSection = () => <div>Graphic Design Section</div>;
 
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
         <EducationSection />
         <SkillsSection />
         <ExperienceSection />
-        <GraphicDesignSection />
+        {/* <GraphicDesignSection /> */}
         <ProjectsSection />
         <CertificationsSection />
         <AchievementsSection />
