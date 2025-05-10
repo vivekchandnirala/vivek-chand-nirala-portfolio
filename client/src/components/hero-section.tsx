@@ -24,7 +24,7 @@ export function HeroSection() {
   const titles = [
     "Full Stack Web Developer",
     "Graphic Designer",
-    "Problem Solver",
+    "SOC Analyst",
     "NCC Cadet",
   ];
 
@@ -165,7 +165,7 @@ export function HeroSection() {
               </Button>
 
              <Button asChild variant="outline" className="rounded-full px-6 border-primary/20 hover:bg-primary/5">
-                <a href="https://drive.google.com/file/d/1eDyLEsSiVUNF8kEzW95CVvj7BuCIgbXe/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
+                <a href="https://drive.google.com/file/d/1BCys_8XusQ9ZN1mTOQf8lcSXdnPqk4RS/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                   <VideoIcon className="mr-2 h-4 w-4" /> Video CV
                </a>
              </Button>
